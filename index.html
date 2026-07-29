@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <script>
+    const tg = window.Telegram?.WebApp;
+    tg?.ready();
+    const user = tg?.initDataUnsafe?.user;
+    const initData = tg?.initData || '';
+
+    const APP_URL = 'https://script.google.com/macros/s/AKfycbypM1bqPCovjf-AzT6VdiZhFwVzf4NU5PLJexASxAHEFtHPJEVgVS1jPeMctcAQBY8k/exec';
+    const url = new URL(APP_URL);
+    if (user?.id) url.searchParams.set('tgid', user.id);
+    url.searchParams.set('initData', initData);
+
+    window.location.replace(url.toString());
+  </script>
+</body>
+</html>
