@@ -10,7 +10,7 @@
     const user = tg?.initDataUnsafe?.user;
     const initData = tg?.initData || '';
 
-    const APP_URL = 'https://script.google.com/macros/s/AKfycbzCY1nXm9110xMKUUiFFdeeCHMgGGRpVhVH0n1qWDFbOA5pzOeVtNLIlD1qe9xW1uni/exec';
+    const APP_URL = 'https://script.google.com/macros/s/AKfycby0qa8p20-MdUEhH3_cIZwntLI-rMbx9Mc3mhwksw3U2r0Pr8GBSWoo9h0EJ0YDjNn6/exec';
     const url = new URL(APP_URL);
     if (user?.id) url.searchParams.set('tgid', user.id);
     url.searchParams.set('initData', initData);
