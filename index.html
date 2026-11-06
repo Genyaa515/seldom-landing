@@ -7,15 +7,20 @@
   <script>
     const tg = window.Telegram?.WebApp;
     tg?.ready();
-    const user = tg?.initDataUnsafe?.user;
-    const initData = tg?.initData || '';
-    
-    const APP_URL = 'https://script.google.com/macros/s/AKfycbz5P4Gdxzjls7-W7G_tXFTdeU3mtsAcLdBR9XRTUZHRNRh0JaHRiGooX_GenueUX-Vq/exec';
-    const url = new URL(APP_URL);
-    if (user?.id) url.searchParams.set('tgid', user.id);
-    url.searchParams.set('initData', initData);
+    tg?.expand();
 
-    window.location.replace(url.toString());
+    // Ждем 300 миллисекунд, чтобы Telegram гарантированно передал данные
+    setTimeout(function() {
+      const user = tg?.initDataUnsafe?.user;
+      const initData = tg?.initData || '';
+
+      const APP_URL = 'https://script.google.com/macros/s/AKfycbz5P4Gdxzjls7-W7G_tXFTdeU3mtsAcLdBR9XRTUZHRNRh0JaHRiGooX_GenueUX-Vq/exec';
+      const url = new URL(APP_URL);
+      if (user?.id) url.searchParams.set('tgid', user.id);
+      url.searchParams.set('initData', initData);
+
+      window.location.replace(url.toString());
+    }, 300);
   </script>
 </body>
 </html>
